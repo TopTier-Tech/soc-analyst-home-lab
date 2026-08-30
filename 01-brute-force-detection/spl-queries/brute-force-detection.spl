@@ -1,0 +1,2 @@
+index=* host=DC01 EventCode=4625
+index =* EventCode=4624 host="DC01" soc_test
