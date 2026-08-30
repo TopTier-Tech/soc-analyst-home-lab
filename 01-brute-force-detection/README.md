@@ -125,16 +125,31 @@ The presence of both failed authentication events (**4625**) and a subsequent su
 
 ## Splunk Dashboard
 
-A basic investigation was performed using Splunk searches.
+A custom Splunk dashboard was created to support the detection and investigation of brute-force authentication activity.
 
-A dedicated dashboard can be created in the future to visualize:
+**Dashboard Name:** Brute Force Attack Detection & Investigation
 
-* Failed authentication attempts over time
-* Successful authentication attempts
-* Source IP addresses
-* Target accounts
-* Authentication trends
-* Failed versus successful logons
+The dashboard contains the following panels:
+
+- **Failed Authentication Attempts**  
+  Displays the volume of failed logon events (EventCode 4625) over time.
+
+- **Top Attacking IPs**  
+  Shows the source IP addresses responsible for the highest number of failed authentication attempts.  
+  The primary attacker IP identified was **192.168.56.103** (Kali Linux).
+
+- **Targeted Accounts**  
+  Lists the accounts that received the most failed logon attempts.  
+  The main targeted account was **soc_test**.
+
+- **Successful Logins**  
+  Displays successful authentication events (EventCode 4624) for further investigation.
+
+- **Account Lockouts**  
+  Monitors whether any accounts were locked as a result of the failed attempts.
+
+- **Authentication Timeline**  
+  Provides a chronological view of both failed (4625) and successful (4624) authentication events.
 
 ## MITRE ATT&CK Mapping
 
