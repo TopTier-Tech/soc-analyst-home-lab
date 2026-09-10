@@ -1,0 +1,51 @@
+PANEL 1: TOTAL POWERSHELL EVENTS
+
+index=main EventCode=4104
+| stats count
+
+PANEL 2: POWERSHELL ACTIVITY OVER TIME
+
+index=main EventCode=4104
+| timechart count
+
+PANEL 3: POWERSHELL ACTIVITY BY USER
+
+index=main EventCode=4104
+| stats count by User
+| sort - count
+
+PANEL 4: POWERSHELL ACTIVITY BY HOST
+
+index=main EventCode=4104
+| stats count by host
+| sort - count
+
+PANEL 5: SUSPICIOUS POWERSHELL INDICATORS
+
+index=main EventCode=4104
+| eval indicator=case(
+match(_raw,"(?i)EncodedCommand"),"Encoded Command",
+match(_raw,"(?i)ExecutionPolicy\s+Bypass"),"Execution Policy Bypass",
+match(_raw,"(?i)WindowStyle\s+Hidden"),"Hidden Window",
+match(_raw,"(?i)Invoke-Expression"),"Invoke-Expression",
+match(_raw,"(?i)DownloadString"),"DownloadString",
+match(_raw,"(?i)FromBase64String"),"Base64 Decoding",
+true(),"Normal PowerShell"
+)
+| stats count by indicator
+| sort - count
+
+PANEL 6: RECENT POWERSHELL ACTIVITY
+
+index=main EventCode=4104
+| eval indicator=case(
+match(_raw,"(?i)EncodedCommand"),"Encoded Command",
+match(_raw,"(?i)ExecutionPolicy\s+Bypass"),"Execution Policy Bypass",
+match(_raw,"(?i)WindowStyle\s+Hidden"),"Hidden Window",
+match(_raw,"(?i)Invoke-Expression"),"Invoke-Expression",
+match(_raw,"(?i)DownloadString"),"DownloadString",
+match(_raw,"(?i)FromBase64String"),"Base64 Decoding",
+true(),"Normal PowerShell"
+)
+| table _time host User indicator
+| sort - _time
