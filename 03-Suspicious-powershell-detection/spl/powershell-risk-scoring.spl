@@ -1,0 +1,17 @@
+index=main EventCode=4104
+| eval risk=0
+| eval risk=if(match(_raw,"(?i)EncodedCommand"),risk+30,risk)
+| eval risk=if(match(_raw,"(?i)ExecutionPolicy\s+Bypass"),risk+25,risk)
+| eval risk=if(match(_raw,"(?i)WindowStyle\s+Hidden"),risk+20,risk)
+| eval risk=if(match(_raw,"(?i)Invoke-Expression"),risk+20,risk)
+| eval risk=if(match(_raw,"(?i)DownloadString"),risk+25,risk)
+| eval risk=if(match(_raw,"(?i)FromBase64String"),risk+20,risk)
+| eval risk_level=case(
+risk>=60,"High",
+risk>=30,"Medium",
+risk>0,"Low",
+true(),"Normal"
+)
+| where risk > 0
+| table _time host User risk risk_level Message
+| sort - risk
