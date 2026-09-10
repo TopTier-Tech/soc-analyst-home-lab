@@ -1,0 +1,33 @@
+index=main EventCode=4104
+| table _time host EventCode Message
+| sort - _time
+
+index=main EventCode=4104
+| eval indicator=case(
+match(_raw,"(?i)EncodedCommand"),"Encoded Command",
+match(_raw,"(?i)ExecutionPolicy\s+Bypass"),"Execution Policy Bypass",
+match(_raw,"(?i)WindowStyle\s+Hidden"),"Hidden Window",
+match(_raw,"(?i)Invoke-Expression"),"Invoke-Expression",
+match(_raw,"(?i)DownloadString"),"DownloadString",
+match(_raw,"(?i)FromBase64String"),"Base64 Decoding",
+true(),"Normal PowerShell"
+)
+| stats count by indicator
+| sort - count
+
+index=main EventCode=4104
+| eval suspicious_indicator=case(
+match(_raw,"(?i)EncodedCommand"),"Encoded Command",
+match(_raw,"(?i)ExecutionPolicy\s+Bypass"),"Execution Policy Bypass",
+match(_raw,"(?i)WindowStyle\s+Hidden"),"Hidden Window",
+match(_raw,"(?i)Invoke-Expression"),"Invoke-Expression",
+match(_raw,"(?i)DownloadString"),"DownloadString",
+match(_raw,"(?i)FromBase64String"),"Base64 Decoding",
+true(),"Other"
+)
+| where suspicious_indicator!="Other"
+| stats count by host User suspicious_indicator
+| sort - count
+
+index=main EventCode=4104
+| timechart count
