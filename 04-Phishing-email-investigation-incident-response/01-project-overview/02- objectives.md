@@ -1,4 +1,4 @@
-Objectives:
+## Objectives:
 
 1. Identify the suspected phishing email.
 2. Analyze the email headers.
