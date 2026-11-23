@@ -1,18 +1,22 @@
-## Objectives:
+# Project Objectives
 
-1. Identify the suspected phishing email.
-2. Analyze the email headers.
-3. Validate sender authenticity.
-4. Analyze SPF, DKIM and DMARC.
-5. Extract URLs and domains.
-6. Analyze attachments safely.
-7. Calculate attachment hashes.
-8. Enrich IOCs using threat intelligence.
-9. Determine whether the user interacted with the email.
-10. Investigate endpoint activity.
-11. Correlate activity in Splunk.
-12. Determine incident severity.
+The objectives of this project are to:
+
+1. Identify a suspected phishing email.
+2. Analyze email headers.
+3. Investigate sender identity.
+4. Identify suspicious domains and URLs.
+5. Extract indicators of compromise.
+6. Analyze email attachments safely.
+7. Calculate file hashes.
+8. Enrich indicators using threat intelligence.
+9. Determine whether the recipient interacted with the email.
+10. Investigate associated endpoint activity.
+11. Correlate relevant telemetry using Splunk.
+12. Build an incident timeline.
 13. Map observed behavior to MITRE ATT&CK.
-14. Produce a SOC incident report.
-15. Recommend containment and recovery actions.
-16. Improve detection logic.
+14. Determine incident severity.
+15. Determine whether the alert is a true or false positive.
+16. Recommend containment and recovery actions.
+17. Produce a professional SOC incident report.
+18. Develop recommendations for improving future detection.
