@@ -1,1 +1,29 @@
+From: Microsoft 365 Security <security@micr0soft-example.com>
+To: employee@northstar.example
+Subject: Urgent: Account Verification Required
+Date: Sun, 22 Nov 2026 09:30:00 +0100
+Message-ID: <20261122093000.001@micr0soft-example.com>
+MIME-Version: 1.0
+Content-Type: text/html
 
+<html>
+<body>
+
+<p>Hello,</p>
+
+<p>Your Microsoft 365 account requires immediate verification.</p>
+
+<p>Failure to complete verification may result in temporary account suspension.</p>
+
+<p>
+<a href="https://login-m365-verification.example">
+Verify your account
+</a>
+</p>
+
+<p>Thank you,</p>
+
+<p>Microsoft 365 Security Team</p>
+
+</body>
+</html>
