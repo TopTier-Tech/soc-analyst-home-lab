@@ -1,72 +1,125 @@
-
 # Phishing Email Investigation & Incident Response
 
 ## Overview
 
-This project simulates a Tier 1 SOC investigation of a suspected
-phishing email.
+This project simulates a Tier 1 SOC investigation of a suspected phishing email.
 
-The investigation demonstrates the process of identifying
-phishing indicators, analyzing email characteristics, extracting
-IOCs, enriching indicators with threat intelligence, investigating
-endpoint activity, correlating security telemetry in Splunk,
-mapping observed behavior to MITRE ATT&CK, and documenting
-incident response actions.
+The investigation covers the complete workflow from initial email triage through IOC extraction, threat intelligence, endpoint investigation, Splunk correlation, MITRE ATT&CK mapping, incident response, and final reporting.
 
-## Objectives
+## Investigation Objective
 
-- Investigate a suspected phishing email
-- Extract and analyze IOCs
-- Perform threat intelligence enrichment
-- Investigate user interaction
-- Correlate endpoint telemetry
-- Use Splunk for investigation
-- Map activity to MITRE ATT&CK
-- Produce a SOC incident report
-- Recommend containment and recovery actions
+The objective was to determine whether the email represented a phishing attempt, identify relevant indicators of compromise, investigate potential user and endpoint activity, and document appropriate incident response actions.
 
-## Tools
+## Environment
 
 - Splunk Enterprise
 - Windows
+- Windows Event Logs
 - Sysmon
+- Outlook
 - Kali Linux
-- Wireshark where applicable
-- Threat intelligence platforms
 - MITRE ATT&CK
+- Threat intelligence resources
 
 ## Investigation Workflow
 
-Email Alert
-↓
+```text
+Phishing Email
+      ↓
 Email Analysis
-↓
+      ↓
 IOC Extraction
-↓
+      ↓
 Threat Intelligence
-↓
+      ↓
 User Interaction
-↓
+      ↓
 Endpoint Investigation
-↓
-Splunk Correlation
-↓
-Timeline
-↓
-MITRE ATT&CK
-↓
+      ↓
+Splunk Investigation
+      ↓
+Timeline Reconstruction
+      ↓
+MITRE ATT&CK Mapping
+      ↓
 Incident Response
-↓
-Lessons Learned
+      ↓
+Final SOC Report
+```
 
-## Investigation Results
+## Key Findings
 
-[This section will be completed after the investigation.]
+The email demonstrated multiple phishing characteristics, including:
 
-## Screenshots
+- Lookalike sender domain
+- Brand impersonation
+- Urgency
+- Account verification pressure
+- Suspicious external URL
 
-[Links to evidence will be added as the project progresses.]
+The investigation then evaluated whether the email resulted in user interaction or suspicious endpoint activity.
 
-## Incident Report
+## IOC Summary
 
-[Link will be added after completion.]
+| Type | Indicator |
+|---|---|
+| Email | security@micr0soft-example.com |
+| Domain | micr0soft-example.com |
+| URL | https://login-m365-verification.example |
+
+## MITRE ATT&CK
+
+The phishing activity was mapped to:
+
+- T1566 — Phishing
+- T1566.002 — Spearphishing Link
+
+Additional techniques were mapped only where corresponding behavior was supported by investigation evidence.
+
+## Investigation Documentation
+
+### Project Overview
+[Project Overview](01-project-overview/project-overview.md)
+
+### Objectives
+[Project Objectives](01-project-overview/objectives.md)
+
+### Email Analysis
+[Email Analysis](04-email-analysis/email-analysis.md)
+
+### IOC Analysis
+[IOC Analysis](05-ioc-analysis/ioc-analysis.md)
+
+### Threat Intelligence
+[Threat Intelligence](06-threat-intelligence/threat-intelligence.md)
+
+### User Interaction
+[User Interaction](07-user-interaction/user-interaction.md)
+
+### Endpoint Investigation
+[Endpoint Investigation](08-endpoint-investigation/endpoint-investigation.md)
+
+### Splunk Investigation
+[Splunk Investigation](09-splunk-investigation/splunk-investigation.md)
+
+### Incident Timeline
+[Incident Timeline](10-incident-timeline/timeline.md)
+
+### MITRE ATT&CK Mapping
+[MITRE ATT&CK](11-mitre-attack/mitre-mapping.md)
+
+### Incident Response
+[Incident Response](12-incident-response/incident-response.md)
+
+### Final Incident Report
+[Incident Report](13-incident-report/incident-report.md)
+
+## Evidence
+
+Screenshots and supporting evidence are available in the [screenshots](screenshots/) directory.
+
+## Analyst Conclusion
+
+The investigation demonstrated a structured SOC Tier 1 approach to phishing triage, IOC analysis, endpoint investigation, SIEM correlation, threat mapping, and incident response.
+
+The project emphasizes evidence-based analysis rather than relying on a single indicator to determine whether an email is malicious.
