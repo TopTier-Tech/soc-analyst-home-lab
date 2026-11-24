@@ -123,3 +123,4 @@ Screenshots and supporting evidence are available in the [screenshots](screensho
 The investigation demonstrated a structured SOC Tier 1 approach to phishing triage, IOC analysis, endpoint investigation, SIEM correlation, threat mapping, and incident response.
 
 The project emphasizes evidence-based analysis rather than relying on a single indicator to determine whether an email is malicious.
+
